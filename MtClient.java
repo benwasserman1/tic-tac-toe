@@ -42,8 +42,8 @@ public class MtClient {
       DataOutputStream serverOutput = new DataOutputStream(connectionSock.getOutputStream());
 
       System.out.println("Connection made.\n");
-      System.out.println("Let's play some Tic-Tac-Toe\n");
-      System.out.println("Here is your game board. Indicate the row and column that you would like to mark\n");
+      System.out.println("***** Let's play some Tic-Tac-Toe *****\n");
+      System.out.println("***** Here is your game board. Indicate the row and column that you would like to mark *****\n");
 
       int[][] board = new int[3][3];
 
@@ -66,7 +66,15 @@ public class MtClient {
       Scanner keyboard = new Scanner(System.in);
       while (true) {
         String data = keyboard.nextLine();
-        serverOutput.writeBytes(data + "\n");
+        char char_row = data.charAt(0);
+        char char_col = data.charAt(1);
+        if ((Character.getNumericValue(char_row) > 3) || (Character.getNumericValue(char_col) > 3)) {
+          System.out.println("The row or column input was outside the bounds of the board");
+        }
+        else {
+          serverOutput.writeBytes(data + "\n");
+        }
+
       }
     } catch (IOException e) {
       System.out.println(e.getMessage());
