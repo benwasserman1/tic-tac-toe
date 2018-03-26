@@ -33,14 +33,6 @@ public class ClientHandler implements Runnable {
    */
   public void run() {
 
-    int[][] board = new int[3][3];
-
-    for (int i = 0; i < 3; ++i) {
-      for (int j = 0; j < 3; ++j) {
-        board[i][j] = 1;
-      }
-    }
-
     try {
       System.out.println("Connection made with socket " + connectionSock);
       BufferedReader clientInput = new BufferedReader(
@@ -51,17 +43,6 @@ public class ClientHandler implements Runnable {
         if (clientText != null) {
           System.out.println("Received: " + clientText);
 
-          //Still need to identify the player
-          char char_row = clientText.charAt(0);
-          char char_col = clientText.charAt(1);
-
-          int row = Character.getNumericValue(char_row);
-          int col = Character.getNumericValue(char_col);
-
-          System.out.print("ROW: " + row);
-          System.out.print("COL: " + col);
-
-          board[row-1][col-1] = 0;
           // Turn around and output this data
           // to all other clients except the one
           // that sent us this information
