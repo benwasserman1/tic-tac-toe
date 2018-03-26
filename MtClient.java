@@ -41,7 +41,19 @@ public class MtClient {
 
       DataOutputStream serverOutput = new DataOutputStream(connectionSock.getOutputStream());
 
-      System.out.println("Connection made.");
+      System.out.println("Connection made.\n");
+      System.out.println("Let's play some Tic-Tac-Toe\n");
+      System.out.println("Here is your game board. Indicate the row and column that you would like to mark\n");
+
+      int[][] board = new int[3][3];
+
+      for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+          board[i][j] = 1;
+          System.out.print(1);
+        }
+        System.out.println();
+      }
 
       // Start a thread to listen and display data sent by the server
       ClientListener listener = new ClientListener(connectionSock);
