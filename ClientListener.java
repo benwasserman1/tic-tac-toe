@@ -23,8 +23,6 @@ public class ClientListener implements Runnable {
     this.connectionSock = sock;
   }
 
-public static int[][] board = new int[3][3];
-
   /**
    * Gets message from server and dsiplays it to the user.
    */
@@ -38,23 +36,9 @@ public static int[][] board = new int[3][3];
         // Get data sent from the server
         String serverText = serverInput.readLine();
 
-        //Still need to identify the player
-        char char_row = serverText.charAt(0);
-        char char_col = serverText.charAt(1);
-
-        int row = Character.getNumericValue(char_row);
-        int col = Character.getNumericValue(char_col);
-
-        board[row-1][col-1] = 1;
-
-        //System.out.println("From client listener: " + serverText);
+        //How can we get a local copy of the user's board here. It goes with the sender?
         if (serverInput != null) {
-          for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-              System.out.print(board[i][j]);
-            }
-            System.out.println();
-          }
+          System.out.println(serverText);
         } else {
           // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);

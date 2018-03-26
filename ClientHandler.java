@@ -16,6 +16,7 @@ import java.net.Socket;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
 
 
 public class ClientHandler implements Runnable {
@@ -26,6 +27,8 @@ public class ClientHandler implements Runnable {
     this.connectionSock = sock;
     this.socketList = socketList;  // Keep reference to master list
   }
+
+  public static int[][] board = new int[3][3];
 
   /**
    * received input from a client.
@@ -40,8 +43,25 @@ public class ClientHandler implements Runnable {
       while (true) {
         // Get data sent from a client
         String clientText = clientInput.readLine();
+
+        //Still need to identify the player
+        char char_row = clientText.charAt(0);
+        char char_col = clientText.charAt(1);
+
+        int row = Character.getNumericValue(char_row);
+        int col = Character.getNumericValue(char_col);
+
+        board[row-1][col-1] = 1;
+
         if (clientText != null) {
           System.out.println("Received: " + clientText);
+          for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+              System.out.print(board[i][j]);
+            }
+            System.out.println();
+          }
+          System.out.println();
 
           // Turn around and output this data
           // to all other clients except the one
