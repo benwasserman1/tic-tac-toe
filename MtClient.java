@@ -26,12 +26,12 @@ import java.net.Socket;
 
 import java.util.Scanner;
 
-
 public class MtClient {
   /**
    * main method.
    * @params not used.
    */
+
   public static void main(String[] args) {
     try {
       String hostname = "localhost";
@@ -69,7 +69,10 @@ public class MtClient {
         char char_row = data.charAt(0);
         char char_col = data.charAt(1);
         if ((Character.getNumericValue(char_row) > 3) || (Character.getNumericValue(char_col) > 3)) {
-          System.out.println("The row or column input was outside the bounds of the board");
+          System.out.println("The row or column input was larger than the bounds of the board");
+        }
+        else if ((Character.getNumericValue(char_row) < 1) || (Character.getNumericValue(char_col) < 1)) {
+          System.out.println("The row or column input was less than the bounds of the board");
         }
         else {
           serverOutput.writeBytes(data + "\n");

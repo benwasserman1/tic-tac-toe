@@ -29,6 +29,15 @@ public class ClientHandler implements Runnable {
   }
 
   public static String[][] board_string = new String[][] {{"0", "0", "0"}, {"0", "0", "0"}, {"0", "0", "0"}};
+  public static int count = 0;
+
+  public boolean checkTie() {
+    //tie check here
+  }
+
+  public boolean checkWin() {
+    //Win check here
+  }
 
   /**
    * received input from a client.
@@ -40,6 +49,7 @@ public class ClientHandler implements Runnable {
       System.out.println("Connection made with socket " + connectionSock);
       BufferedReader clientInput = new BufferedReader(
           new InputStreamReader(connectionSock.getInputStream()));
+
       while (true) {
         // Get data sent from a client
         String clientText = clientInput.readLine();
@@ -51,7 +61,16 @@ public class ClientHandler implements Runnable {
         int row = Character.getNumericValue(char_row);
         int col = Character.getNumericValue(char_col);
 
-        board_string[row-1][col-1] = "1";
+        if (count == 0)
+        {
+          board_string[row-1][col-1] = "1";
+          count = 1;
+        }
+        else if (count == 1)
+        {
+          board_string[row-1][col-1] = "2";
+          count = 0;
+        }
 
         if (clientText != null) {
           System.out.println("Received: " + clientText);

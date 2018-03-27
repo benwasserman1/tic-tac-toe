@@ -31,6 +31,10 @@ public class ClientListener implements Runnable {
     try {
       BufferedReader serverInput = new BufferedReader(
           new InputStreamReader(connectionSock.getInputStream()));
+
+      //String initialText = serverInput.readLine();
+      //System.out.println("Hello");
+
       while (true) {
 
         // Get data sent from the server
