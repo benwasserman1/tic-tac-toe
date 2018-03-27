@@ -52,7 +52,6 @@ public class ClientHandler implements Runnable {
         int col = Character.getNumericValue(char_col);
 
         board_string[row-1][col-1] = "1";
-        board_string[1][2] = "1";
 
         if (clientText != null) {
           System.out.println("Received: " + clientText);

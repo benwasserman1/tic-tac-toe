@@ -36,6 +36,8 @@ public class ClientListener implements Runnable {
         // Get data sent from the server
         String serverText = serverInput.readLine();
 
+        System.out.println();
+
         if (serverInput != null) {
            int i = 0;
            while (i < 7){
