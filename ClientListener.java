@@ -32,9 +32,6 @@ public class ClientListener implements Runnable {
       BufferedReader serverInput = new BufferedReader(
           new InputStreamReader(connectionSock.getInputStream()));
 
-      //String initialText = serverInput.readLine();
-      //System.out.println("Hello");
-
       while (true) {
 
         // Get data sent from the server
@@ -43,15 +40,20 @@ public class ClientListener implements Runnable {
         System.out.println();
 
         if (serverInput != null) {
-           int i = 0;
-           while (i < 7){
-             for (int j = i; j < i+3; ++j)
-             {
-               System.out.print(serverText.charAt(j));
-             }
-             i+=3;
-             System.out.println();
-           }
+          if (!serverText.substring(0, 6).equals("player")) {
+            int i = 0;
+            while (i < 7){
+              for (int j = i; j < i+3; ++j)
+              {
+                System.out.print(serverText.charAt(j));
+              }
+              i+=3;
+              System.out.println();
+            }
+          }
+          else {
+            System.out.println(serverText + " has won the game");
+          }
         } else {
           // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);
