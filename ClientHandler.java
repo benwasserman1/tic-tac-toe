@@ -98,13 +98,13 @@ public class ClientHandler implements Runnable {
         String sendData = "nothing";
 
         if (checkWin("2") == true) {
-          //sendData = "player 2";
+          sendData = "player 2";
         }
         else if (checkWin("1") == true) {
-          //sendData = "player 1";
+          sendData = "player 1";
         }
         else if ((checkWin("1") == false) && (checkWin("2") == false) && (checkComplete() == true)) {
-          //sendData = "Tie";
+          sendData = "Tie";
         }
 
         if (clientText != null) {
@@ -121,7 +121,6 @@ public class ClientHandler implements Runnable {
           // to all other clients except the one
           // that sent us this information
           for (Socket s : socketList) {
-            if (s != connectionSock) {
               DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
               if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
                 sendData = "";
@@ -133,7 +132,6 @@ public class ClientHandler implements Runnable {
                 }
               }
               clientOutput.writeBytes(sendData + "\n");
-            }
           }
         } else {
           // Connection was lost
