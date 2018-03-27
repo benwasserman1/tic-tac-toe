@@ -36,9 +36,16 @@ public class ClientListener implements Runnable {
         // Get data sent from the server
         String serverText = serverInput.readLine();
 
-        //How can we get a local copy of the user's board here. It goes with the sender?
         if (serverInput != null) {
-          System.out.println(serverText);
+           int i = 0;
+           while (i < 7){
+             for (int j = i; j < i+3; ++j)
+             {
+               System.out.print(serverText.charAt(j));
+             }
+             i+=3;
+             System.out.println();
+           }
         } else {
           // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);

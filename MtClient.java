@@ -26,6 +26,7 @@ import java.net.Socket;
 
 import java.util.Scanner;
 
+
 public class MtClient {
   /**
    * main method.
@@ -49,7 +50,6 @@ public class MtClient {
 
       for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-          //board[i][j] = 1;
           System.out.print(board[i][j]);
         }
         System.out.println();

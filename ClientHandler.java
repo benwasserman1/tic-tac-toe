@@ -28,7 +28,7 @@ public class ClientHandler implements Runnable {
     this.socketList = socketList;  // Keep reference to master list
   }
 
-  public static int[][] board = new int[3][3];
+  public static String[][] board_string = new String[][] {{"0", "0", "0"}, {"0", "0", "0"}, {"0", "0", "0"}};
 
   /**
    * received input from a client.
@@ -51,17 +51,20 @@ public class ClientHandler implements Runnable {
         int row = Character.getNumericValue(char_row);
         int col = Character.getNumericValue(char_col);
 
-        board[row-1][col-1] = 1;
+        board_string[row-1][col-1] = "1";
+        board_string[1][2] = "1";
 
         if (clientText != null) {
           System.out.println("Received: " + clientText);
           for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-              System.out.print(board[i][j]);
+              System.out.print(board_string[i][j]);
             }
             System.out.println();
           }
           System.out.println();
+
+          String sendData = "";
 
           // Turn around and output this data
           // to all other clients except the one
@@ -69,7 +72,13 @@ public class ClientHandler implements Runnable {
           for (Socket s : socketList) {
             if (s != connectionSock) {
               DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-              clientOutput.writeBytes(clientText + "\n");
+              for (int i = 0; i < 3; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                  sendData += board_string[i][j];
+                }
+
+              }
+              clientOutput.writeBytes(sendData + "\n");
             }
           }
         } else {
