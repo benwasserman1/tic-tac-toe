@@ -43,6 +43,12 @@ public class MtClient {
       DataOutputStream serverOutput = new DataOutputStream(connectionSock.getOutputStream());
 
       System.out.println("Connection made.\n");
+
+      // Start a thread to listen and display data sent by the server
+      ClientListener listener = new ClientListener(connectionSock);
+      Thread theThread = new Thread(listener);
+      theThread.start();
+
       System.out.println("***** Let's play some Tic-Tac-Toe *****\n");
       System.out.println("***** Here is your game board. Indicate the row and column that you would like to mark *****\n");
 
@@ -54,11 +60,6 @@ public class MtClient {
         }
         System.out.println();
       }
-
-      // Start a thread to listen and display data sent by the server
-      ClientListener listener = new ClientListener(connectionSock);
-      Thread theThread = new Thread(listener);
-      theThread.start();
 
       // Read input from the keyboard and send it to everyone else.
       // The only way to quit is to hit control-c, but a quit command
