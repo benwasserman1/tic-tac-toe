@@ -39,7 +39,7 @@ contributions:
 Instructions on how to run program:
 - open 3 terminal windows
 -first run MtServer.java class
--then run the MtClient.java class twice on each of the other 2 terminals respectively
+-then run the MtClient.java class twice (one time on each of the other 2 terminals respectively)
 -game will launch, you will have ability to enter colum index and row index
 - by entering 11 you are telling the game that player 1 is marking colum 1 row 1
 - player 2 (in the second Client terminal window) will not be able to mark 11 on the board as it has already been taken, but can mark any other spot on the 3 x 3 tic tac board
