@@ -143,7 +143,8 @@ public class ClientHandler implements Runnable {
         }
       }
     } catch (Exception e) {
-      System.out.println("Error: " + e.toString());
+      System.out.println("One client has exited the game or the game was over.");
+      System.out.println("Please press control+C");
       // Remove from arraylist
       socketList.remove(connectionSock);
     }

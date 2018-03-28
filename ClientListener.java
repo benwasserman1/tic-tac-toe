@@ -69,7 +69,8 @@ public class ClientListener implements Runnable {
         }
       }
     } catch (Exception e) {
-      System.out.println("Error: " + e.toString());
+      System.out.println("The server terminated connection or the game was over.");
+      System.out.println("Please press control+C");
     }
   }
 } // ClientListener for MtClient
