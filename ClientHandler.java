@@ -15,8 +15,8 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class ClientHandler implements Runnable {
@@ -48,15 +48,13 @@ public class ClientHandler implements Runnable {
   public boolean checkWin(String player) {
     //check diagonals
     if ((board_string[0][0] == player) && (board_string[1][1] == player) && (board_string[2][2] == player)) {
-      return true;
-    }
+      return true;}
     else if ((board_string[0][2] == player) && (board_string[1][1] == player) && (board_string[2][0] == player)) {
       return true;
     }
     //check verticals and horizontals
-    for (int i = 0; i < 3; ++i)
-    {
-      if ((board_string[i][0] == player) && (board_string[i][1] == player) && (board_string[i][2] == player)){
+    for (int i = 0; i < 3; ++i) {
+      if ((board_string[i][0] == player) && (board_string[i][1] == player) && (board_string[i][2] == player)) {
         return true;
       }
       else if ((board_string[0][i] == player) && (board_string[1][i] == player) && (board_string[2][i] == player)) {
@@ -100,13 +98,13 @@ public class ClientHandler implements Runnable {
 
         String sendData = "nothing";
 
-        if (board_string[row-1][col-1] == "0") {
+        if (board_string[row - 1][col -1 ] == "0") {
           if (count == 0) {
-            board_string[row-1][col-1] = "1";
+            board_string[row - 1][col - 1] = "1";
             count = 1;
           }
           else if (count == 1) {
-            board_string[row-1][col-1] = "2";
+            board_string[row - 1][col - 1] = "2";
             count = 0;
           }
         }
@@ -137,23 +135,23 @@ public class ClientHandler implements Runnable {
           // Turn around and output this data
           // to all other clients except the one
           // that sent us this information
-          for (Socket s : socketList) {
-              DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-              if ((sendData.substring(0,1).equals("N"))) {
-                if (s == connectionSock) {
-                  clientOutput.writeBytes(sendData + "\n");
+        for (Socket s : socketList) {
+            DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
+            if ((sendData.substring(0,1).equals("N"))) {
+              if (s == connectionSock) {
+                clientOutput.writeBytes(sendData + "\n");
                 }
               }
-              else if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
-                sendData = "";
-                for (int i = 0; i < 3; ++i) {
-                  for (int j = 0; j < 3; ++j) {
-                    sendData += board_string[i][j];
+            else if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
+              sendData = "";
+              for (int i = 0; i < 3; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                  sendData += board_string[i][j];
                   }
                 }
               }
-              if (!sendData.substring(0,1).equals("N")) {
-                clientOutput.writeBytes(sendData + "\n");
+            if (!sendData.substring(0,1).equals("N")) {
+              clientOutput.writeBytes(sendData + "\n");
               }
           }
         } else {
