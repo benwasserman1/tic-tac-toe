@@ -30,6 +30,7 @@ public class ClientHandler implements Runnable {
 
   public static String[][] board_string = new String[][] {{"0", "0", "0"}, {"0", "0", "0"}, {"0", "0", "0"}};
   public static int count = 0;
+  public static int connection = 0;
 
   //check to see if the board is fully filled out
   public boolean checkComplete() {
@@ -76,8 +77,16 @@ public class ClientHandler implements Runnable {
       BufferedReader clientInput = new BufferedReader(
           new InputStreamReader(connectionSock.getInputStream()));
 
-      DataOutputStream initialOutput = new DataOutputStream(connectionSock.getOutputStream());
-      initialOutput.writeBytes("Hello\n");
+      if (connection == 0) {
+        DataOutputStream initialOutput = new DataOutputStream(connectionSock.getOutputStream());
+        initialOutput.writeBytes("You are player 1. Waiting for player 2 to connect\n");
+        connection++;
+      }
+      else if (connection == 1) {
+        DataOutputStream initialOutput = new DataOutputStream(connectionSock.getOutputStream());
+        initialOutput.writeBytes("You are player 2. Let's play!\n");
+        connection++;
+      }
 
       while (true) {
         // Get data sent from a client

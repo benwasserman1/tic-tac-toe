@@ -60,6 +60,7 @@ public class MtClient {
         }
         System.out.println();
       }
+      System.out.println();
 
       // Read input from the keyboard and send it to everyone else.
       // The only way to quit is to hit control-c, but a quit command
