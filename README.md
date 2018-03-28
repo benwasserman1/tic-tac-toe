@@ -15,9 +15,9 @@ contributions:
 -implemented checkstyle compliance for ClientListener.java & most of ClientHandler.java
 -in charge of READ.ME instructions
 
-Ben Wasserman
-wasse114@mail.chapman.edu
-2280906
+Ben Wasserman,
+wasse114@mail.chapman.edu,
+2280906,
 contributions:
 -general overview/supervision of all files
 -created board for game
