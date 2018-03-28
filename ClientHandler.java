@@ -150,8 +150,9 @@ public class ClientHandler implements Runnable {
                   for (int j = 0; j < 3; ++j) {
                     sendData += board_string[i][j];
                   }
-
                 }
+              }
+              if (!sendData.substring(0,1).equals("N")) {
                 clientOutput.writeBytes(sendData + "\n");
               }
           }
