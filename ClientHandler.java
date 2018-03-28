@@ -142,18 +142,18 @@ public class ClientHandler implements Runnable {
             }
             else if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
               sendData = "";
-            for (int i = 0; i < 3; ++i) {
-              for (int j = 0; j < 3; ++j) {
+              for (int i = 0; i < 3; ++i) {
+                for (int j = 0; j < 3; ++j) {
                   sendData += board_string[i][j];
-                  }
                 }
               }
-              if (!sendData.substring(0,1).equals("N")) {
-                clientOutput.writeBytes(sendData + "\n");
-              }
-        }
-      } else {
-        // Connection was lost
+            }
+            if (!sendData.substring(0,1).equals("N")) {
+              clientOutput.writeBytes(sendData + "\n");
+            }
+          }
+        } else {
+          // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);
           // Remove from arraylist
           socketList.remove(connectionSock);
