@@ -11,7 +11,18 @@ contributions:
 -implemented checkstyle compliance for ClientListener.java & most of ClientHandler.java
 -in charge of READ.ME instructions
 
-Ben Wasserman 
+Ben Wasserman
+wasse114@mail.chapman.edu
+contributions:
+-general overview/supervision of all files
+-created board for game
+-created initial user prompts for game
+-created functionality of playing on board
+-created functionality of checking for duplicate plays in a single spot
+-wrote functions and implemented them to check for wins and ties
+-wrote prompts for users upon connection
+-wrote communication between ClientListener.java and ClientHandler.java
+-commented code
 
 Rita Sachechelashvili
 sache100@mail.chapman.edu
