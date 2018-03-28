@@ -29,7 +29,7 @@ public class ClientHandler implements Runnable {
   }
 
   public static String[][] board_string = new String[][] {{"0", "0", "0"}, 
-  {"0", "0", "0"}, {"0", "0", "0"}};
+    {"0", "0", "0"}, {"0", "0", "0"}};
   public static int count = 0;
   public static int connection = 0;
 
@@ -64,7 +64,7 @@ public class ClientHandler implements Runnable {
     //check verticals and horizontals
     for (int i = 0; i < 3; ++i) {
       if ((board_string[i][0] == player) && (board_string[i][1] == player) 
-        && (board_string[i][2] == player)) {
+          && (board_string[i][2] == player)) {
         return true; }
       else if ((board_string[0][i] == player) && (board_string[1][i] == player) 
           && (board_string[2][i] == player)) {
@@ -138,14 +138,14 @@ public class ClientHandler implements Runnable {
 
         // Turn around and output this data
         // to all other clients except the one
-        // that sent us this information
+          // that sent us this information
           for (Socket s : socketList) {
             DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
             if ((sendData.substring(0,1).equals("N"))) {
               if (s == connectionSock) {
                 clientOutput.writeBytes(sendData + "\n"); }
-            }
-            else if ((!sendData.substring(0,1).equals("p")) 
+                
+            }else if ((!sendData.substring(0,1).equals("p")) 
                 && (!sendData.substring(0,1).equals("T"))) {
               sendData = "";
               for (int i = 0; i < 3; ++i) {
