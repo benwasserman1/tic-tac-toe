@@ -32,7 +32,10 @@ public class ClientHandler implements Runnable {
   public static int count = 0;
   public static int connection = 0;
 
-  //check to see if the board is fully filled out
+  /** 
+    * check to see if the board is fully filled out
+  */
+
   public boolean checkComplete() {
     for (int i = 0; i < 3; ++i) {
       for (int j = 0; j < 3; ++j) {
@@ -44,7 +47,10 @@ public class ClientHandler implements Runnable {
     return true;
   }
 
-  //win check here
+  /**
+  * win check here
+  */
+  
   public boolean checkWin(String player) {
     //check diagonals
     if ((board_string[0][0] == player) && (board_string[1][1] == player) && (board_string[2][2] == player)) {
@@ -102,22 +108,21 @@ public class ClientHandler implements Runnable {
           if (count == 0) {
             board_string[row - 1][col - 1] = "1";
             count = 1;
-          }
+          } //this
           else if (count == 1) {
             board_string[row - 1][col - 1] = "2";
-            count = 0;
-          }
-        }
+            count = 0; }
+        } //this
         else {
           sendData = "Nope";
         }
 
         if (checkWin("2") == true) {
           sendData = "player 2";
-        }
+        }//this
         else if (checkWin("1") == true) {
           sendData = "player 1";
-        }
+        } //this
         else if ((checkWin("1") == false) && (checkWin("2") == false) && (checkComplete() == true)) {
           sendData = "Tie";
         }
@@ -132,20 +137,19 @@ public class ClientHandler implements Runnable {
           }
           System.out.println();
 
-          // Turn around and output this data
-          // to all other clients except the one
-          // that sent us this information
-        for (Socket s : socketList) {
+        // Turn around and output this data
+        // to all other clients except the one
+        // that sent us this information
+          for (Socket s : socketList) {
             DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
             if ((sendData.substring(0,1).equals("N"))) {
               if (s == connectionSock) {
-                clientOutput.writeBytes(sendData + "\n");
-                }
-              }
+                clientOutput.writeBytes(sendData + "\n"); }
+            }
             else if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
               sendData = "";
-              for (int i = 0; i < 3; ++i) {
-                for (int j = 0; j < 3; ++j) {
+            for (int i = 0; i < 3; ++i) {
+              for (int j = 0; j < 3; ++j) {
                   sendData += board_string[i][j];
                   }
                 }
