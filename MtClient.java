@@ -50,8 +50,10 @@ public class MtClient {
       theThread.start();
 
       System.out.println("***** Let's play some Tic-Tac-Toe *****\n");
-      System.out.print("***** Here is your game board. Indicate the row"); 
+      System.out.print("***** Here is your game board. Indicate the row ");
       System.out.print("and column that you would like to mark *****\n");
+
+      System.out.println();
 
       int[][] board = new int[3][3];
 
@@ -73,7 +75,7 @@ public class MtClient {
         char charCol = data.charAt(1);
         if ((Character.getNumericValue(charRow) > 3) || (Character.getNumericValue(charCol) > 3)) {
           System.out.println("The row or column input was larger than the bounds of the board");
-        } else if ((Character.getNumericValue(charRow) < 1) 
+        } else if ((Character.getNumericValue(charRow) < 1)
             || (Character.getNumericValue(charCol) < 1)) {
           System.out.println("The row or column input was less than the bounds of the board");
         } else {

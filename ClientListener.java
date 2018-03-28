@@ -35,6 +35,9 @@ public class ClientListener implements Runnable {
       String initialText = serverInput.readLine();
       System.out.println(initialText);
 
+      String secondText = serverInput.readLine();
+      System.out.println(secondText);
+
       while (true) {
 
         // Get data sent from the server
