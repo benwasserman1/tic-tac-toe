@@ -24,7 +24,7 @@ public class ClientListener implements Runnable {
   }
 
   /**
-   * Gets message from server and dsiplays it to the user.
+   * Gets message from server and diplays it to the user.
    */
   public void run() {
 
@@ -41,7 +41,7 @@ public class ClientListener implements Runnable {
 
         if (serverInput != null) {
           if (!serverText.substring(0, 3).equals("Tie")) {
-            if (!serverText.substring(0, 6).equals("player")) {
+            if (!serverText.substring(0, 6).equals("Player")) {
               int i = 0;
               while (i < 7){
                 for (int j = i; j < i+3; ++j)
@@ -53,7 +53,8 @@ public class ClientListener implements Runnable {
               }
             }
             else {
-              System.out.println(serverText + "has won the game");
+              System.out.println(serverText + " has won the game!");
+              System.exit(0);
             }
           }
           else {
@@ -63,7 +64,7 @@ public class ClientListener implements Runnable {
           }
         } else {
           // Connection was lost
-          System.out.println("Closing connection for socket " + connectionSock);
+          System.out.println("Closing connection for socket. " + connectionSock);
           connectionSock.close();
           break;
         }
