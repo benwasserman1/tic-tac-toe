@@ -33,7 +33,7 @@ public class ClientHandler implements Runnable {
   public static int connection = 0;
 
   /** 
-    * check to see if the board is fully filled out
+    * check to see if the board is fully filled out.
   */
 
   public boolean checkComplete() {
@@ -48,21 +48,20 @@ public class ClientHandler implements Runnable {
   }
 
   /**
-  * win check here
+  * win check here.
   */
-  
+
   public boolean checkWin(String player) {
     //check diagonals
     if ((board_string[0][0] == player) && (board_string[1][1] == player) && (board_string[2][2] == player)) {
-      return true;}
+      return true; }
     else if ((board_string[0][2] == player) && (board_string[1][1] == player) && (board_string[2][0] == player)) {
       return true;
     }
     //check verticals and horizontals
     for (int i = 0; i < 3; ++i) {
       if ((board_string[i][0] == player) && (board_string[i][1] == player) && (board_string[i][2] == player)) {
-        return true;
-      }
+        return true; }
       else if ((board_string[0][i] == player) && (board_string[1][i] == player) && (board_string[2][i] == player)) {
         return true;
       }
@@ -107,25 +106,20 @@ public class ClientHandler implements Runnable {
         if (board_string[row - 1][col -1 ] == "0") {
           if (count == 0) {
             board_string[row - 1][col - 1] = "1";
-            count = 1;
-          } //this
+            count = 1; }
           else if (count == 1) {
             board_string[row - 1][col - 1] = "2";
             count = 0; }
-        } //this
+        } 
         else {
-          sendData = "Nope";
-        }
+          sendData = "Nope"; }
 
         if (checkWin("2") == true) {
-          sendData = "player 2";
-        }//this
+          sendData = "player 2"; }
         else if (checkWin("1") == true) {
-          sendData = "player 1";
-        } //this
+          sendData = "player 1"; } 
         else if ((checkWin("1") == false) && (checkWin("2") == false) && (checkComplete() == true)) {
-          sendData = "Tie";
-        }
+          sendData = "Tie"; }
 
         if (clientText != null) {
           System.out.println("Received: " + clientText);
@@ -154,12 +148,12 @@ public class ClientHandler implements Runnable {
                   }
                 }
               }
-            if (!sendData.substring(0,1).equals("N")) {
-              clientOutput.writeBytes(sendData + "\n");
+              if (!sendData.substring(0,1).equals("N")) {
+                clientOutput.writeBytes(sendData + "\n");
               }
-          }
-        } else {
-          // Connection was lost
+        }
+      } else {
+        // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);
           // Remove from arraylist
           socketList.remove(connectionSock);
