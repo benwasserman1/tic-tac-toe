@@ -55,10 +55,10 @@ public class ClientHandler implements Runnable {
   public boolean checkWin(String player) {
     //check diagonals
     if ((board_string[0][0] == player) && (board_string[1][1] == player) 
-      && (board_string[2][2] == player)) {
+        && (board_string[2][2] == player)) {
       return true; }
     else if ((board_string[0][2] == player) && (board_string[1][1] == player) 
-      && (board_string[2][0] == player)) {
+        && (board_string[2][0] == player)) {
       return true;
     }
     //check verticals and horizontals
@@ -67,7 +67,7 @@ public class ClientHandler implements Runnable {
         && (board_string[i][2] == player)) {
         return true; }
       else if ((board_string[0][i] == player) && (board_string[1][i] == player) 
-        && (board_string[2][i] == player)) {
+          && (board_string[2][i] == player)) {
         return true;
       }
     }
@@ -123,7 +123,7 @@ public class ClientHandler implements Runnable {
         else if (checkWin("1") == true) {
           sendData = "player 1"; } 
         else if ((checkWin("1") == false) && (checkWin("2") == false) 
-          && (checkComplete() == true)) {
+            && (checkComplete() == true)) {
           sendData = "Tie"; }
 
         if (clientText != null) {
@@ -146,13 +146,14 @@ public class ClientHandler implements Runnable {
                 clientOutput.writeBytes(sendData + "\n"); }
             }
             else if ((!sendData.substring(0,1).equals("p")) 
-              && (!sendData.substring(0,1).equals("T"))) {
+                && (!sendData.substring(0,1).equals("T"))) {
               sendData = "";
               for (int i = 0; i < 3; ++i) {
-                  for (int j = 0; j < 3; ++j) {
-                    sendData += board_string[i][j]; }
+                for (int j = 0; j < 3; ++j) {
+                  sendData += board_string[i][j]; 
                 }
               }
+            }
             if (!sendData.substring(0,1).equals("N")) {
               clientOutput.writeBytes(sendData + "\n"); }
           }
