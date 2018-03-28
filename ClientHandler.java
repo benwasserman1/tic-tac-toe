@@ -5,6 +5,11 @@
  * and the server.  It runs in a separate thread but has a
  * link to a common list of sockets to handle broadcast.
  *
+ * This class maintains the board as well. Every turn, the
+ * board is updated with either a 2 or a 1, depending on
+ * the player, then we check for a tie or a win, and this
+ * data is send to the ClientListener.
+ *
  */
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -148,11 +153,11 @@ public class ClientHandler implements Runnable {
           System.out.println();
 
           // Turn around and output this data
-          // to all other clients except the one
-          // that sent us this information
+          // to all clients
           for (Socket s : socketList) {
             DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
             if ((sendData.substring(0,1).equals("N"))) {
+              // only send to client that input data
               if (s == connectionSock) {
                 clientOutput.writeBytes(sendData + "\n");
               }

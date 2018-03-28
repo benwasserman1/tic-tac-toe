@@ -4,6 +4,8 @@
  * This class runs on the client end and just
  * displays any text received from the server.
  *
+ * This program displays the board to the user
+ * which is received from the server
  */
 
 import java.io.BufferedReader;
@@ -45,6 +47,7 @@ public class ClientListener implements Runnable {
 
         System.out.println();
 
+        // Check for certain game conditions (win, tie, etc)
         if (serverInput != null) {
           if (serverText.substring(0, 3).equals("Tie")) {
             System.out.println(serverText);
