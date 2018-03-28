@@ -19,7 +19,6 @@ Ben Wasserman,
 wasse114@mail.chapman.edu,
 2280906,
 contributions:
--general overview/supervision of all files
 -created board for game
 -created initial user prompts for game
 -created functionality of playing on board
@@ -28,6 +27,7 @@ contributions:
 -wrote prompts for users upon connection
 -wrote communication between ClientListener.java and ClientHandler.java
 -commented code
+-general overview/supervision of all files
 
 Rita Sachechelashvili
 sache100@mail.chapman.edu
