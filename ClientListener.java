@@ -41,7 +41,7 @@ public class ClientListener implements Runnable {
 
         if (serverInput != null) {
           if (!serverText.substring(0, 3).equals("Tie")) {
-            if (!serverText.substring(0, 6).equals("Player")) {
+            if (!serverText.substring(0, 6).equals("player")) {
               int i = 0;
               while (i < 7){
                 for (int j = i; j < i+3; ++j)
