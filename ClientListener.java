@@ -56,14 +56,14 @@ public class ClientListener implements Runnable {
           } else {
             int i = 0;
             while (i < 7) {
-              for (int j = i; j < i + 3; ++j){
+              for (int j = i; j < i + 3; ++j) {
                 System.out.print(serverText.charAt(j));
               }
               i += 3;
               System.out.println();
-              }
+            }
           }
-      } else {
+        } else {
           // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);
           connectionSock.close();
