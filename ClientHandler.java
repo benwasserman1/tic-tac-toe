@@ -144,8 +144,8 @@ public class ClientHandler implements Runnable {
             if ((sendData.substring(0,1).equals("N"))) {
               if (s == connectionSock) {
                 clientOutput.writeBytes(sendData + "\n"); }
-                
-            }else if ((!sendData.substring(0,1).equals("p")) 
+
+            } else if ((!sendData.substring(0,1).equals("p")) 
                 && (!sendData.substring(0,1).equals("T"))) {
               sendData = "";
               for (int i = 0; i < 3; ++i) {
