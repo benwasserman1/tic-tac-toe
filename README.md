@@ -1,5 +1,9 @@
 Tic Tac Toe
 
+March 28th, 2018
+Chapman University 
+CPSC 353 Dr. Fahy
+
 Game Developers:
 
 Riccardo Angiolini
@@ -13,6 +17,7 @@ contributions:
 
 Ben Wasserman
 wasse114@mail.chapman.edu
+2280906
 contributions:
 -general overview/supervision of all files
 -created board for game
