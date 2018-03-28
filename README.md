@@ -14,8 +14,11 @@ contributions:
 Ben Wasserman 
 
 Rita Sachechelashvili
-
-
+sache100@mail.chapman.edu
+contributions:
+-worked on making console outputs user friendly
+-worked on a method for ClientHandler.java that checks if a cell has been already occupied by a player's move to prevent double input
+-completed checkstyle for MtClient.java
 
 Instructions on how to run program:
 - open 3 terminal windows
