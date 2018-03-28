@@ -54,7 +54,6 @@ public class ClientListener implements Runnable {
             }
             else {
               System.out.println(serverText + " has won the game!");
-              System.exit(0);
             }
           }
           else {
@@ -64,7 +63,7 @@ public class ClientListener implements Runnable {
           }
         } else {
           // Connection was lost
-          System.out.println("Closing connection for socket. " + connectionSock);
+          System.out.println("Closing connection for socket " + connectionSock);
           connectionSock.close();
           break;
         }
