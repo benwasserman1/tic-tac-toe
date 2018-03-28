@@ -86,16 +86,21 @@ public class ClientHandler implements Runnable {
         int row = Character.getNumericValue(char_row);
         int col = Character.getNumericValue(char_col);
 
-        if (count == 0) {
-          board_string[row-1][col-1] = "1";
-          count = 1;
-        }
-        else if (count == 1) {
-          board_string[row-1][col-1] = "2";
-          count = 0;
-        }
-
         String sendData = "nothing";
+
+        if (board_string[row-1][col-1] == "0") {
+          if (count == 0) {
+            board_string[row-1][col-1] = "1";
+            count = 1;
+          }
+          else if (count == 1) {
+            board_string[row-1][col-1] = "2";
+            count = 0;
+          }
+        }
+        else {
+          sendData = "Nope";
+        }
 
         if (checkWin("2") == true) {
           sendData = "player 2";
@@ -122,7 +127,12 @@ public class ClientHandler implements Runnable {
           // that sent us this information
           for (Socket s : socketList) {
               DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-              if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
+              if ((sendData.substring(0,1).equals("N"))) {
+                if (s == connectionSock) {
+                  clientOutput.writeBytes(sendData + "\n");
+                }
+              }
+              else if ((!sendData.substring(0,1).equals("p")) && (!sendData.substring(0,1).equals("T"))) {
                 sendData = "";
                 for (int i = 0; i < 3; ++i) {
                   for (int j = 0; j < 3; ++j) {
@@ -130,8 +140,8 @@ public class ClientHandler implements Runnable {
                   }
 
                 }
+                clientOutput.writeBytes(sendData + "\n");
               }
-              clientOutput.writeBytes(sendData + "\n");
           }
         } else {
           // Connection was lost
