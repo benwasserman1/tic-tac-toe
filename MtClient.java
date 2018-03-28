@@ -54,6 +54,7 @@ public class MtClient {
         }
         System.out.println();
       }
+      System.out.println();
 
       // Start a thread to listen and display data sent by the server
       ClientListener listener = new ClientListener(connectionSock);
