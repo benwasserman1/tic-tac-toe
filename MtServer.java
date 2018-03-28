@@ -52,7 +52,7 @@ public class MtServer {
       // an exit condition then we'll go ahead and close the socket
       //serverSock.close();
     } catch (IOException e) {
-      System.out.println("One client has disconnected or the game was over.");
+      System.out.println(e.getMessage());
     }
   }
 
