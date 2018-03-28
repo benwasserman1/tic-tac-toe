@@ -40,19 +40,26 @@ public class ClientListener implements Runnable {
         System.out.println();
 
         if (serverInput != null) {
-          if (!serverText.substring(0, 6).equals("player")) {
-            int i = 0;
-            while (i < 7){
-              for (int j = i; j < i+3; ++j)
-              {
-                System.out.print(serverText.charAt(j));
+          if (!serverText.substring(0, 3).equals("Tie")) {
+            if (!serverText.substring(0, 6).equals("player")) {
+              int i = 0;
+              while (i < 7){
+                for (int j = i; j < i+3; ++j)
+                {
+                  System.out.print(serverText.charAt(j));
+                }
+                i+=3;
+                System.out.println();
               }
-              i+=3;
-              System.out.println();
+            }
+            else {
+              System.out.println(serverText + "has won the game");
             }
           }
           else {
-            System.out.println(serverText + " has won the game");
+            System.out.println(serverText);
+            //connectionSock.close();
+            //break;
           }
         } else {
           // Connection was lost
