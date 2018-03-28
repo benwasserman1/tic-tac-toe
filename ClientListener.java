@@ -45,26 +45,25 @@ public class ClientListener implements Runnable {
         if (serverInput != null) {
           if (serverText.substring(0, 3).equals("Tie")) {
             System.out.println(serverText);
-          }else if (serverText.substring(0,3).equals("Nop")) {
+          } else if (serverText.substring(0,3).equals("Nop")) {
             System.out.println("You can't play there. That space has already been taken");
-          }else if (serverText.substring(0, 3).equals("pla")) {
+          } else if (serverText.substring(0, 3).equals("pla")) {
             System.out.println(serverText + " has won the game!");
             System.out.println("Thank you for playing tic tac toe!");
             connectionSock.close();
             System.exit(0);
             break;
-          }else {
+          } else {
             int i = 0;
             while (i < 7) {
-              for (int j = i; j < i + 3; ++j)
-              {
+              for (int j = i; j < i + 3; ++j){
                 System.out.print(serverText.charAt(j));
               }
               i += 3;
               System.out.println();
               }
-            }
-        } else {
+          }
+      } else {
           // Connection was lost
           System.out.println("Closing connection for socket " + connectionSock);
           connectionSock.close();
