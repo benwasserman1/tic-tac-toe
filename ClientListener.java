@@ -51,6 +51,10 @@ public class ClientListener implements Runnable {
           }
           else if (serverText.substring(0, 3).equals("pla")) {
             System.out.println(serverText + " has won the game!");
+            System.out.println("Thank you for playing tic tac toe!");
+            connectionSock.close();
+            System.exit(0);
+            break;
           }
           else {
             int i = 0;
